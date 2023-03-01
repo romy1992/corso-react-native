@@ -1,1 +1,0 @@
-# corso-react-native
