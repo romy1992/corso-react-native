@@ -11,7 +11,7 @@ export default function App() {
     <View style={styles.container}>
       <TextGoalInput setVal={setValueGoals} />
       <View style={styles.goalsContainer}>
-        <FlatComp listGoals={listGoals} />
+        <FlatComp list={listGoals} val={setValueGoals} />
       </View>
     </View>
   );
