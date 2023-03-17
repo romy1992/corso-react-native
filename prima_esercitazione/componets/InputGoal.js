@@ -9,25 +9,13 @@ function InputGoal(props) {
         value(valueText);
     }
 
-    function addedGoal() {
-        if (text === '')
-            return alert('Obbligatorio')
-
-        props.container((valu) => [
-            ...valu, { pippo: text, id: Math.random().toString() }
-        ])
-
-        value('')
-    }
-
-
     return (
         <View style={styles.container}>
             <TextInput style={styles.text} placeholder='Inserisci qualcosa'
                 onChangeText={changeText}
                 value={text}
             />
-            <Button style={styles.button} title='Aggiungi' onPress={addedGoal} />
+            <Button style={styles.button} title='Aggiungi' onPress={props.added.bind(this, text, value)} />
         </View>
     );
 
@@ -42,19 +30,17 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         padding: 10,
         width: '100%',
-        flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
     },
     text: {
+        flex: 1,
         padding: 8,
         borderWidth: 1,
         borderColor: 'gray',
         borderRadius: 5,
         marginRight: 10,
         width: '90%'
-    },
-    button: {
     }
 });
 

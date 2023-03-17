@@ -1,19 +1,45 @@
 import { useState } from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, Button } from 'react-native';
 import TextGoalInput from './componets/TextGoalInput';
 import FlatComp from './componets/FlatComp';
+import { StatusBar } from 'expo-status-bar';
 
 export default function App() {
-  
+
+  const [modaleInvisible, valueInvisible] = useState(false);
+
   const [listGoals, setValueGoals] = useState([]);// Crea una nuova variabile di globale specificandone che è una lista "useState([])"
-  
-  return ( 
-    <View style={styles.container}>
-      <TextGoalInput setVal={setValueGoals} />
-      <View style={styles.goalsContainer}>
-        <FlatComp list={listGoals} val={setValueGoals} />
+
+
+  function startAddGoal() {
+    valueInvisible(true);
+  }
+
+  function endAddGoal() {
+    valueInvisible(false);
+  }
+
+  return (
+    <>
+      <StatusBar style='light'/>
+      <View style={styles.container}>
+        <Button
+          title='Aggiungi nella lista'
+          onPress={startAddGoal}
+          color="red" />
+        <TextGoalInput
+          closeVisibility={endAddGoal}
+          visible={modaleInvisible}
+          // visibleVa={valueInvisible}
+          setVal={setValueGoals} />
+        <View
+          style={styles.goalsContainer}>
+          <FlatComp
+            list={listGoals}
+            val={setValueGoals} />
+        </View>
       </View>
-    </View>
+    </>
   );
 }
 

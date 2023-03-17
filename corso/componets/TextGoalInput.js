@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { View, TextInput, StyleSheet, Button } from 'react-native';
+import { View, TextInput, StyleSheet, Button, Modal, Image } from 'react-native';
 
 export default function TextGoalInput(props) {
 
@@ -8,7 +8,6 @@ export default function TextGoalInput(props) {
     function inputChange(inputText) { // Una volta inserito il valore TextInput , onChangeText passerà il valore alla funzione iserita..In questo caso la variabile di stato viene settato nel textGoal
         textGoal(inputText);
     }
-
 
     function pressInput() {
         // console.log(goalText); => Una volta settato in valore in "text" , con la funzione "onPress" stampa il valore della nome della variabile...In questo caso "goalText"
@@ -24,16 +23,43 @@ export default function TextGoalInput(props) {
 
         textGoal('');
 
+        console.log(goalText)
+
+        props.closeVisibility();
     }
 
+    // function endAddGoal() {
+    //     props.visibleVa(false)
+    // }
+
     return (
-        <View style={styles.contentInput}>
-            <TextInput style={styles.textInput} placeholder="Inserisci qualcosa"
-                onChangeText={inputChange}
-                value={goalText}
-            />
-            <Button title="Aggiungi" onPress={pressInput} />
-        </View>
+        <Modal visible={props.visible} animationType="slide" >
+            <View style={styles.contentInput}>
+                <Image
+                    style={styles.image}
+                    source={require('../assets/images/goal.png')}
+                />
+                <TextInput style={styles.textInput} placeholder="Inserisci qualcosa"
+                    onChangeText={inputChange}
+                    value={goalText}
+                />
+                <View style={styles.buttonConteiner}>
+                    <View
+                        style={styles.button} >
+                        <Button
+                            title="Aggiungi"
+                            onPress={pressInput} />
+                    </View>
+                    <View
+                        style={styles.button} >
+                        <Button
+                            title="Cancella"
+                            onPress={props.closeVisibility}
+                        />
+                    </View>
+                </View>
+            </View>
+        </Modal>
     );
 }
 
@@ -42,19 +68,29 @@ export default function TextGoalInput(props) {
 const styles = StyleSheet.create({
     contentInput: {
         flex: 1,
-        flexDirection: 'row',
-        justifyContent: 'space-between',
+        justifyContent: 'center',
         alignItems: 'center',
         paddingBottom: 20,
-        borderBottomWidth: 1,
-        borderBottomColor: '#ccccc'
+        backgroundColor: '#311b6b'
     },
     textInput: {
-        padding: 10,
         borderWidth: 1,
         borderColor: '#cccccc',
-        width: '70%',
-        marginRight: 10,
-        padding: 8
+        width: '100%',
+        padding: 8,
+        color: 'white',
+        marginTop: 5
     },
+    buttonConteiner: {
+        marginTop: 10,
+        flexDirection: 'row'
+    },
+    button: {
+        width: 100,
+        marginHorizontal: 8
+    },
+    image: {
+        width: 100,
+        height: 100
+    }
 });
