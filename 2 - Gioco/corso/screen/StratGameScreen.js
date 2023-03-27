@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Alert, StyleSheet, TextInput, View } from "react-native";
 import PrimaryButton from "../components/PrimaryButton";
 
-function StratGameScreen() {
+function StratGameScreen({ onPickNumber }) {// richiama il valore passato 
     const [number, setNumber] = useState('');
 
     function textValueNumber(numberValue) {
@@ -25,6 +25,7 @@ function StratGameScreen() {
             );
         }
 
+        onPickNumber(chosenNumber); // lo associa alla funzione
     }
 
 
