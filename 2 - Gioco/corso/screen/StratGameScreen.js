@@ -1,6 +1,9 @@
 import { useState } from "react";
 import { Alert, StyleSheet, TextInput, View } from "react-native";
-import PrimaryButton from "../components/PrimaryButton";
+import Card from "../components/ui/Card";
+import InstructionText from "../components/ui/InstructionText";
+import PrimaryButton from "../components/ui/PrimaryButton";
+import Colors from "../constants/Colors";
 
 function StratGameScreen({ onPickNumber }) {// richiama il valore passato 
     const [number, setNumber] = useState('');
@@ -31,23 +34,27 @@ function StratGameScreen({ onPickNumber }) {// richiama il valore passato
 
     return (
         <View style={styles.container}>
-            <TextInput
-                style={styles.numberInput}
-                maxLength={2}
-                keyboardType="number-pad"
-                autoCapitalize="none"//esempio per maiuscole
-                autoCorrect={false}// esempio 
-                onChangeText={textValueNumber}
-                value={number}
-            />
-            <View style={styles.contentButtons}>
-                <View style={styles.contentButton}>
-                    <PrimaryButton onPress={resetNumer}>Cancella</PrimaryButton>
+            <InstructionText>Indovina il numero</InstructionText>
+            <Card>
+                <InstructionText style={styles.marginText}>inserisci il numero</InstructionText>
+                <TextInput
+                    style={styles.numberInput}
+                    maxLength={2}
+                    keyboardType="number-pad"
+                    autoCapitalize="none"//esempio per maiuscole
+                    autoCorrect={false}// esempio 
+                    onChangeText={textValueNumber}
+                    value={number}
+                />
+                <View style={styles.contentButtons}>
+                    <View style={styles.contentButton}>
+                        <PrimaryButton onPress={resetNumer}>Cancella</PrimaryButton>
+                    </View>
+                    <View style={styles.contentButton}>
+                        <PrimaryButton onPress={confirmNumber}>Conferma</PrimaryButton>
+                    </View>
                 </View>
-                <View style={styles.contentButton}>
-                    <PrimaryButton onPress={confirmNumber}>Conferma</PrimaryButton>
-                </View>
-            </View>
+            </Card>
         </View>
     )
 }
@@ -56,28 +63,21 @@ export default StratGameScreen;
 
 const styles = StyleSheet.create({
     container: {
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#72063c',
         marginTop: 100,
-        marginHorizontal: 24,
-        padding: 16,
-        borderRadius: 8,
-        elevation: 8,// solo per Android
-        // shadow... per IOS
-        shadowColor: 'black',
-        shadowOffset: { width: 0, height: 2 },
-        shadowRadius: 6,
-        shadowOpacity: 1
+        alignItems: "center",
+        flex: 1
+    },
+    marginText: {
+        marginBottom: 12
     },
     numberInput: {
         textAlign: 'center',
         height: 50,
         width: 50,
         fontSize: 32,
-        borderBottomColor: '#ddb52f',
+        borderBottomColor: Colors.primaryYellow,
         borderBottomWidth: 2,
-        color: '#ddb52f',
+        color: Colors.primaryYellow,
         marginVertical: 8,
         fontWeight: 'bold'
     },

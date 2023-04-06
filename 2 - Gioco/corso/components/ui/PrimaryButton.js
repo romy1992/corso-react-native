@@ -1,4 +1,5 @@
 import { View, Text, StyleSheet, Pressable } from "react-native";
+import Colors from "../../constants/Colors";
 
 // {children} è una proprietà per recuperare il valore nei tag dei component
 // {OnPress} è una proprietà per il Press sul component 
@@ -22,10 +23,10 @@ export default PrimaryButton;
 
 const styles = StyleSheet.create({
     buttonOut: {
-        backgroundColor: '#640433',
+        backgroundColor: Colors.colorButton,
         margin: 4,
         borderRadius: 28,
-        borderColor: '#740433',
+        borderColor: Colors.borderButton,
         borderWidth: 1,
         overflow: "hidden",
         width: 140
@@ -41,6 +42,6 @@ const styles = StyleSheet.create({
     },
     press: {
         opacity: 0.5,
-        borderColor: '#945433',
+        borderColor: Colors.pressButton,
     }
 });
