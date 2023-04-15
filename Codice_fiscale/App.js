@@ -1,7 +1,6 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
-import Title from './components/Title';
+import { StyleSheet, View } from 'react-native';
 import Form from './components/Form';
+import Title from './components/Title';
 
 export default function App() {
   return (
@@ -15,14 +14,7 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'gray',
-    alignItems: 'center',
-    // justifyContent: 'center',
-  },
-  containerForm: {
-    backgroundColor: 'white',
-    height: 40,
-    flex: 1,
+    // backgroundColor: 'gray',
     // alignItems: 'center',
     // justifyContent: 'center',
   }
