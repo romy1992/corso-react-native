@@ -1,9 +1,9 @@
 {
   "expo": {
-    "name": "corso",
-    "slug": "corso",
+    "name": "Test_Lista",
+    "slug": "Test_Lista",
     "version": "1.0.0",
-    "orientation": "dafault",
+    "orientation": "default",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "splash": {
