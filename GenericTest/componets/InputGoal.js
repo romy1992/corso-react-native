@@ -1,4 +1,4 @@
-import { StyleSheet, TextInput } from "react-native";
+import { Pressable, StyleSheet, TextInput } from "react-native";
 
 function InputGoal({ inputValue, setInputValue }) {
 
@@ -22,6 +22,7 @@ const styles = StyleSheet.create({
         borderColor: 'black',
         marginRight: 10,
         padding: 7,
-        borderRadius: 2
+        borderRadius: 2,
+        width: '70%'
     }
 });
