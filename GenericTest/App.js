@@ -14,8 +14,10 @@ export default function App() {
 
   // Effetto che viene applicato dopo la modifica della variabile : valuesList 
   useEffect(() => {
-    if (valuesList.length !== 0)
-      alert("Nella lista è stata aggiunta una parola")
+    if (valuesList.length !== 0){
+      alert("Nella lista è stata aggiunta una parola nuova : " + value);
+      setValue('');
+    }
   }, [valuesList])
 
 
@@ -30,12 +32,12 @@ export default function App() {
     setValueList((valueText) => [
       ...valueText, { text: value, id: Math.random().toString() }
     ])
-    setValue('')
+  
   }
 
-  function deleteValue(id) {
+  function deleteValue(itemValue) {
     setValueList((current) => {
-      return current.filter((goal) => goal.id !== id);
+      return current.filter((goal) => goal.id !== itemValue.item.id);
     });
   }
 
@@ -52,7 +54,7 @@ export default function App() {
           style={styles.flatList}
           data={valuesList}
           renderItem={(itemValue) =>
-            <Pressable onPress={deleteValue.bind(this, itemValue.item.id)}>
+            <Pressable onPress={deleteValue}>
               <Text style={styles.textFLat}
                 key={itemValue.item.id}>{itemValue.item.text}</Text>
             </Pressable>
