@@ -1,6 +1,6 @@
 import { FlatList } from "react-native";
-import { CATEGORIES } from "../data/dummy-data";
 import CategoryGridTitle from "../components/CategoryGridTitle";
+import { CATEGORIES } from "../data/dummy-data";
 
 function CategoriesScreen({ navigation }) {// {navigation} => è il nome della proprietà standard che servirà per essere iniettata nei componenti
 

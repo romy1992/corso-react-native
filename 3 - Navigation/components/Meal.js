@@ -1,26 +1,33 @@
-import { View, Text, Image, Pressable, StyleSheet } from "react-native";
+import { useNavigation } from "@react-navigation/native";
+import { Image, Pressable, StyleSheet, Text, View } from "react-native";
+import MealDetail from "./MealDetail";
 
-function Meal({ title, imageUrl, duration, complexity, affordability }) {
+function Meal({ id, title, imageUrl, duration, complexity, affordability }) {
 
-    function hendlerDetail(){
-        
+    const navigation = useNavigation();
+
+    // Funzione per i dettagli dopo onPress
+    function selectDetailHandler() {
+        navigation.navigate('DetailMeal',
+            {
+                mealId: id
+            });
     }
-
-
 
     return (
         <View style={styles.container}>
-            <Pressable android_ripple={{ color: '#351401' }}>
+            <Pressable
+                android_ripple={{ color: '#351401' }}
+                onPress={selectDetailHandler}>
                 <View style={styles.innerContainer}>
                     <View>
                         <Image style={styles.image} source={{ uri: imageUrl }} />
                         <Text style={styles.title}>{title}</Text>
                     </View>
-                    <View style={styles.detail}>
-                        <Text style={styles.detailItem}>{duration}m</Text>
-                        <Text style={styles.detailItem}>{complexity.toUpperCase()}</Text>
-                        <Text style={styles.detailItem}>{affordability.toUpperCase()}</Text>
-                    </View>
+                    <MealDetail
+                        duration={duration}
+                        affordability={affordability}
+                        complexity={complexity} />
                 </View>
             </Pressable>
         </View>
@@ -46,21 +53,10 @@ const styles = StyleSheet.create(
             width: '100%',
             height: 200
         },
-        detail: {
-            marginTop: 3,
-            flexDirection: "row",
-            justifyContent: "center",
-            padding: 8
-        },
         title: {
             fontSize: 16,
             fontWeight: "bold",
             textAlign: "center"
-        },
-        detailItem: {
-            fontSize: 12,
-            fontWeight: "bold",
-            marginHorizontal: 4
         }
     }
 );

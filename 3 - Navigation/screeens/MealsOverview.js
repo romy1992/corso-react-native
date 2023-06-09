@@ -1,6 +1,6 @@
 import { FlatList, View } from "react-native";
 import { CATEGORIES, MEALS } from "../data/dummy-data";
-import Meal from "./Meal";
+import Meal from "../components/Meal";
 import { useLayoutEffect } from "react";
 // import { useRoute } from "@react-navigation/native";
 
@@ -28,9 +28,12 @@ function MealsOverview({ route, navigation }) {
 
 
     function handelerMeals(itemData) {
+
         const item = itemData.item;
 
-        const mealPropreties = { // Modalità per passare i parametri da un componente all'altro
+        // Modalità per passare i parametri da un componente all'altro
+        const mealPropreties = {
+            id: item.id,
             title: item.title,
             imageUrl: item.imageUrl,
             duration: item.duration,
@@ -38,7 +41,7 @@ function MealsOverview({ route, navigation }) {
             affordability: item.affordability
         }
 
-        return <Meal {...mealPropreties} /> // Aggangiandoli cosi
+        return <Meal {...mealPropreties} />// Aggangiandoli cosi
     }
 
     return (
