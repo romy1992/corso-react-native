@@ -1,12 +1,11 @@
-import { Image, Pressable, StyleSheet, Text, View } from "react-native";
+import { Pressable, StyleSheet, Text, View } from "react-native";
 
-function MealScreen({ id, title, image, onPress }) {
+function MealScreen({ color, title, onPress }) {
     return (
-        <View>
+        <View style={styles.container}>
             <Pressable onPress={onPress}>
-                <View>
-                    <Image style={styles.image} source={{ uri: image }} />
-                    <Text>{title}</Text>
+                <View style={[styles.innerContainer, { backgroundColor: color }]}>
+                    <Text style={styles.text}>{title}</Text>
                 </View>
             </Pressable>
         </View>
@@ -16,8 +15,23 @@ function MealScreen({ id, title, image, onPress }) {
 export default MealScreen;
 
 const styles = StyleSheet.create({
-    image: {
-        width: '100%',
-        height: 80
+    container: {
+        flex: 1,
+        borderWidth: 1,
+        borderColor: 'gray',
+        elevation: 4,
+        margin: 10,
+        borderRadius: 8
+    },
+    innerContainer: {
+        overflow: 'hidden',
+        borderRadius: 8,
+        textAlign: 'center',
+        height: 80,
+        justifyContent: 'center',
+        alignContent: 'center'
+    },
+    text: {
+        color: 'white'
     }
 })

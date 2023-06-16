@@ -1,5 +1,5 @@
 import { FlatList } from "react-native";
-import { CATEGORIES } from "../../3 - Navigation/data/dummy-data";
+import { CATEGORIES, MEALS } from "../../3 - Navigation/data/dummy-data";
 import MealScreen from "./MealScreen";
 
 function CategoryScreen({ navigation }) {
@@ -11,14 +11,14 @@ function CategoryScreen({ navigation }) {
         function navigateMeal() {
             navigation.navigate('Meal',
                 {
-                    meal: item
+                    idCat: item.id,
+                    title: item.title,
                 });
         }
 
         const mealProprierties = {
-            id: item.id,
+            color: item.color,
             title: item.title,
-            image: item.image,
             onPress: navigateMeal
         }
 
@@ -30,6 +30,8 @@ function CategoryScreen({ navigation }) {
         <FlatList data={CATEGORIES}
             keyExtractor={(item) => item.id}
             renderItem={handlerMeal}
+            numColumns={2}
+
         />
     );
 }
